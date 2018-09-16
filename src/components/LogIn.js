@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {handleAuthUser} from '../actions/users'
 
 class LogIn extends Component {
   state = {
@@ -12,8 +13,11 @@ class LogIn extends Component {
     }))
   }
 
-  logInUser() {
-    console.log("user logged in: " + this.state.selectedUser)
+  handleLogInUser() {
+    const { dispatch } = this.props
+
+    let userId = this.state.selectedUser
+    dispatch(handleAuthUser(this.props.users[userId]))
   }
   
 
@@ -32,7 +36,7 @@ class LogIn extends Component {
           
         </select>
         <br/><br/>
-        <button onClick={() => this.logInUser()}>Log In</button>
+        <button onClick={() => this.handleLogInUser()}>Log In</button>
       </div>
     )
   }
