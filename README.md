@@ -1,1 +1,1 @@
-# would-you-rather-app
+# Would You Rather App
