@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {handleAuthUser} from '../actions/users'
+import {handleAuthUser} from '../actions/authedUser'
 import { Redirect } from 'react-router-dom'
 
 class LogIn extends Component {
