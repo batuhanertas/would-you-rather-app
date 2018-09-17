@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {handleAuthUser} from '../actions/users'
+import { Redirect } from 'react-router-dom'
 
 class LogIn extends Component {
   state = {
     selectedUser: '',
+    toHome: false,
   }
 
   handleChange(selectedUser) {
@@ -18,6 +20,10 @@ class LogIn extends Component {
 
     let userId = this.state.selectedUser
     dispatch(handleAuthUser(this.props.users[userId]))
+
+    this.setState( () => ({
+      toHome: true,
+    }))
   }
   
 
@@ -25,6 +31,12 @@ class LogIn extends Component {
     const { users } = this.props
     let userIdsAndNames = []
     userIdsAndNames = Object.keys(users).map( (user) => ({ id: users[user].id, name: users[user].name }))
+
+    const { toHome } = this.state
+
+    if (toHome === true) {
+      return <Redirect to='/home' />
+    }
     
     return (
       <div className="dropdown">
