@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from './Question'
+import HomeQuestion from './HomeQuestion'
 
 
 class Home extends Component {
@@ -13,7 +13,7 @@ class Home extends Component {
                 <ul>
                     {this.props.answeredQuestionIds.map((id) => (
                         <li key={id}>
-                            <Question id={id}/>
+                            <HomeQuestion id={id}/>
                         </li>
                     ))}
                 </ul>
@@ -21,7 +21,7 @@ class Home extends Component {
                 <ul>
                     {this.props.unansweredQuestionIds.map((id) => (
                         <li key={id}>
-                            <Question id={id}/>
+                            <HomeQuestion id={id}/>
                         </li>
                     ))}
                 </ul>
@@ -43,7 +43,7 @@ function mapStateToProps ({ questions, authedUser }) {
             unansweredQuestions[questions[question].id] = questions[question]
         }
     })
-    
+
     return {
         unansweredQuestionIds: Object.keys(unansweredQuestions)
             .sort((a,b) => unansweredQuestions[b].timestamp - unansweredQuestions[a].timestamp),

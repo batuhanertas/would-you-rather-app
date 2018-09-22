@@ -1,28 +1,38 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import QuestionOverview from './QuestionOverview';
+import QuestionSubmit from './QuestionSubmit';
 
 class Question extends Component {
-    render () {
-        const { question } = this.props
+    render() {
+        const { questionAnswered, id } = this.props
 
         return (
             <div>
-                <h4>Would you rather?</h4>
-                <h5>{question.optionOne.text}</h5>
-                <Link to={`/questions/${question.id}`} >
-                    View Poll
-                </Link>
+                {questionAnswered === true 
+                    ? <QuestionOverview id={id} /> 
+                    : <QuestionSubmit id={id} />
+                }
             </div>
+            
         )
     }
 }
 
-function mapStateToProps( { questions }, { id }) {
+function mapStateToProps ( { questions, authedUser }, props) {
+    const { id } = props.match.params
     const question = questions[id]
+
+    let answered = false
+
+    if (question.optionOne.votes.includes(authedUser.id) || question.optionTwo.votes.includes(authedUser.id)) {
+        answered = true
+    }
+
     return {
-        question : question
+        questionAnswered: answered,
+        id: id
     }
 }
 
-export default withRouter(connect(mapStateToProps)(Question))
+export default connect(mapStateToProps)(Question)
