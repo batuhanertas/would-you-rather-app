@@ -1,4 +1,5 @@
 export const AUTH_USER = 'AUTH_USER'
+export const LOGOUT_USER = 'LOGOUT_USER'
 
 export function authUser(authedUser) {
     return {
@@ -12,3 +13,18 @@ export function handleAuthUser (user) {
         dispatch(authUser(user))
     }
 }
+
+export function logoutUser() {
+    return {
+        type: LOGOUT_USER,
+        authedUser: undefined
+    }
+}
+
+export function handleLogoutUser() {
+    return (dispatch) => {
+        dispatch(logoutUser)
+    }
+}
+
+

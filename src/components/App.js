@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import LogIn from './LogIn';
 import Home from './Home'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Nav from './Nav'
 
 
 class App extends Component {
@@ -16,15 +17,16 @@ class App extends Component {
     return (
       <div >
         <Router>
-        <Fragment>
-          <div className='container'>
-             <div>
-                <Route path='/' exact component={LogIn} />
-                <Route path='/home' component={Home} />
-              </div>
-          </div>
-        </Fragment>
-      </Router>
+          <Fragment>
+            <div className='container'>
+              <Nav/>
+              <div>
+                  <Route path='/' exact component={LogIn} />
+                  <Route path='/home' component={Home} />
+                </div>
+            </div>
+          </Fragment>
+        </Router>
       </div>
     );
   }
