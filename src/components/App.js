@@ -3,6 +3,7 @@ import { handleInitialData } from '../actions/shared'
 import { connect } from 'react-redux'
 import LogIn from './LogIn';
 import Home from './Home'
+import QuestionPage from './QuestionPage'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Nav from './Nav'
 
@@ -23,6 +24,7 @@ class App extends Component {
               <div>
                   <Route path='/' exact component={LogIn} />
                   <Route path='/home' component={Home} />
+                  <Route path='/questions/:id' component={QuestionPage} />
                 </div>
             </div>
           </Fragment>

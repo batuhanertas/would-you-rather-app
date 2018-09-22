@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router-dom'
 
 class Question extends Component {
     render () {
@@ -9,6 +10,9 @@ class Question extends Component {
             <div>
                 <h4>Would you rather?</h4>
                 <h5>{question.optionOne.text}</h5>
+                <Link to={`/questions/${question.id}`} >
+                    View Poll
+                </Link>
             </div>
         )
     }
@@ -21,4 +25,4 @@ function mapStateToProps( { questions }, { id }) {
     }
 }
 
-export default connect(mapStateToProps)(Question)
+export default withRouter(connect(mapStateToProps)(Question))
