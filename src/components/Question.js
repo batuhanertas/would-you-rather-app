@@ -3,10 +3,22 @@ import { connect } from 'react-redux'
 
 class Question extends Component {
     render () {
+        const { question } = this.props
+
         return (
-            <h3>Hello World</h3>
+            <div>
+                <h4>Would you rather?</h4>
+                <h5>{question.optionOne.text}</h5>
+            </div>
         )
     }
 }
 
-export default connect()(Question)
+function mapStateToProps( { questions }, { id }) {
+    const question = questions[id]
+    return {
+        question : question
+    }
+}
+
+export default connect(mapStateToProps)(Question)
