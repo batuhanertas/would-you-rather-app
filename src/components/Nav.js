@@ -28,7 +28,7 @@ class Nav extends Component {
     }
 
         return (
-            <nav>
+            <nav className="nav">
                 <ul>
                     <li>
                         Home
