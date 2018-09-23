@@ -7,6 +7,8 @@ class Nav extends Component {
     state = {
         toLogIn: false,
         toNewQuestion: false,
+        toLeaderBoard: false,
+        toHome: false
     }
 
     handleLogOutUser() {
@@ -27,8 +29,20 @@ class Nav extends Component {
         }))
     }
 
+    handleLeaderBoard() {
+        this.setState( () => ({
+            toLeaderBoard: true,
+        }))
+    }
+
+    handleHome() {
+        this.setState( () => ({
+            toHome: true,
+        }))
+    }
+
     render () {
-        const { toLogIn, toNewQuestion } = this.state
+        const { toLogIn, toNewQuestion, toLeaderBoard, toHome } = this.state
 
         if (toLogIn === true) {
         return <Redirect to='/' />
@@ -38,16 +52,24 @@ class Nav extends Component {
             return <Redirect to='/add' />
         }
 
+        if (toLeaderBoard === true) {
+            return <Redirect to='/leaderboard' />
+        }
+
+        if (toHome === true) {
+            return <Redirect to='/home' />
+        }
+
         return (
             <nav className="nav">
                 <ul>
-                    <li>
+                    <li onClick={() => this.handleHome()}>
                         Home
                     </li>
                     <li onClick={() => this.handleNewQuestion()}>
                         New Question
                     </li>
-                    <li>
+                    <li onClick={() => this.handleLeaderBoard()}>
                         Leader Board
                     </li>
                     <li onClick={() => this.handleLogOutUser()}>
