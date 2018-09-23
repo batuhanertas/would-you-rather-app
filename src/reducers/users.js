@@ -1,5 +1,5 @@
-import { RECEIVE_USERS } from "../actions/users";
-import { SUBMIT_QUESTION } from "../actions/questions";
+import { RECEIVE_USERS } from "../actions/users"
+import { SUBMIT_QUESTION, ADD_QUESTION } from "../actions/questions"
 
 export default function users (state ={}, action) {
     switch (action.type) {
@@ -21,6 +21,17 @@ export default function users (state ={}, action) {
                     }
                 }
             }
+        case ADD_QUESTION:
+            const { question } = action
+            const questionId = question.id
+            return {
+                ...state,
+                [question.author]: {
+                    ...state[question.author],
+                    questions: state[question.author].questions.concat(questionId)
+                }
+            }
+
         default:
             return state;
     }

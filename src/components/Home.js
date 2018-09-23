@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import HomeQuestion from './HomeQuestion'
+import Nav from './Nav'
 
 
 class Home extends Component {
     render () {
         
         return (
+            
             <div>
+            <Nav/>
                 <h4>Home Page</h4>
                 <h5>Answered Questions</h5>
                 <ul>

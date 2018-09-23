@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import { handleSaveQuestion } from '../actions/questions'
+import { Redirect } from 'react-router-dom'
 
 class NewQuestion extends Component {
     state ={
         optionOne: '',
-        optionTwo: ''
+        optionTwo: '',
+        toHome: false,
     }
 
     handleChange(e) {
@@ -35,15 +38,32 @@ class NewQuestion extends Component {
         }
     }
 
-    handleSubmit() {
+    handleSubmit(authedUser) {
         if (!this.state.optionOne || !this.state.optionTwo) {
             alert('Input cannot be empty.')
         } else {
-            console.log("success")
+            const { dispatch } = this.props
+            let optionOne = this.state.optionOne
+            let optionTwo = this.state.optionTwo
+            dispatch(handleSaveQuestion({
+                author: authedUser.id, 
+                optionOneText: optionOne, 
+                optionTwoText: optionTwo}))
+            this.setState(() => ({
+                toHome: true,
+            }))
         }
     }
 
     render() {
+        const { authedUser } = this.props
+
+        const { toHome } = this.state
+
+        if (toHome === true) {
+          return <Redirect to='/home' />
+        }
+
         return (
             <div>
                 <h1>Create New Question</h1>
@@ -62,10 +82,16 @@ class NewQuestion extends Component {
                 placeholder="Second option..." 
                 onChange={(e) => this.handleChange(e)} />
                 <br />
-                <button onClick={() => this.handleSubmit()}>Submit</button>
+                <button onClick={() => this.handleSubmit(authedUser)}>Submit</button>
             </div>
         )
     }
 }
 
-export default connect()(NewQuestion)
+function mapStateToProps ({ authedUser }) {
+    return {
+        authedUser: authedUser
+    }
+}
+
+export default connect(mapStateToProps)(NewQuestion)
