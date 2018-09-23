@@ -6,6 +6,7 @@ import {handleLogoutUser} from '../actions/authedUser'
 class Nav extends Component {
     state = {
         toLogIn: false,
+        toNewQuestion: false,
     }
 
     handleLogOutUser() {
@@ -20,12 +21,22 @@ class Nav extends Component {
         }))
     }
 
-    render () {
-        const { toLogIn } = this.state
-
-    if (toLogIn === true) {
-      return <Redirect to='/' />
+    handleNewQuestion() {
+        this.setState( () => ({
+            toNewQuestion: true,
+        }))
     }
+
+    render () {
+        const { toLogIn, toNewQuestion } = this.state
+
+        if (toLogIn === true) {
+        return <Redirect to='/' />
+        }
+
+        if (toNewQuestion === true) {
+            return <Redirect to='/add' />
+        }
 
         return (
             <nav className="nav">
@@ -33,7 +44,7 @@ class Nav extends Component {
                     <li>
                         Home
                     </li>
-                    <li>
+                    <li onClick={() => this.handleNewQuestion()}>
                         New Question
                     </li>
                     <li>
