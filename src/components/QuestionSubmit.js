@@ -15,15 +15,16 @@ class QuestionSubmit extends Component {
         }))
     }
 
-    handleSubmit(authedUser, questionId) {
+    handleSubmit(authedUser, qid) {
         const { dispatch } = this.props
+        let answer = this.state.option
 
-        // TODO: handle submit
-        // dispatch(handleSubmitQuestion(authedUser, questionId, this.state.option))
+        dispatch(handleSubmitQuestion({ authedUser, qid, answer }))
 
         this.setState(() => ({
-            toHome: true
-        }))
+            option: '',
+            toHome: true,
+          }))
     }
  
 
