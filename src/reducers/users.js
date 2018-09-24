@@ -13,10 +13,10 @@ export default function users (state ={}, action) {
 
             return {
                 ...state,
-                [authedUser]: {
-                    ...[authedUser],
+                [authedUser.id]: {
+                    ...state[authedUser.id],
                     answers: {
-                      ...[authedUser].answers,
+                      ...state[authedUser.id].answers,
                       [qid]: answer
                     }
                 }
