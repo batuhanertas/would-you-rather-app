@@ -13,10 +13,10 @@ export default function users (state ={}, action) {
 
             return {
                 ...state,
-                [authedUser.id]: {
-                    ...[authedUser.id],
+                [authedUser]: {
+                    ...[authedUser],
                     answers: {
-                      ...[authedUser.id].answers,
+                      ...[authedUser].answers,
                       [qid]: answer
                     }
                 }
@@ -27,8 +27,8 @@ export default function users (state ={}, action) {
             return {
                 ...state,
                 [question.author]: {
-                    ...state[question.author],
-                    questions: state[question.author].questions.concat(questionId)
+                    ...state[question.author].answers,
+                    questions: state[question.author].questions.concat([questionId])
                 }
             }
 
