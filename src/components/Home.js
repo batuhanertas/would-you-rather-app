@@ -2,14 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import HomeQuestion from './HomeQuestion'
 import Nav from './Nav'
+import { Redirect } from 'react-router-dom'
 
 
 class Home extends Component {
     render () {
         
-        return (
-            
+        return (        
             <div>
+                {
+                   !this.props.authedUser.id 
+                   ? <Redirect to='/error' /> : null
+                }
+                
                 <Nav/>
                 <h4>Home Page</h4>
                 <h5>Answered Questions</h5>
@@ -52,6 +57,7 @@ function mapStateToProps ({ questions, authedUser }) {
             .sort((a,b) => unansweredQuestions[b].timestamp - unansweredQuestions[a].timestamp),
         answeredQuestionIds: Object.keys(answeredQuestions)
             .sort((a,b) => answeredQuestions[b].timestamp - answeredQuestions[a].timestamp),
+        authedUser: authedUser,
     }
 }
 

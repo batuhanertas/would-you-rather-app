@@ -67,6 +67,10 @@ class NewQuestion extends Component {
 
         return (
             <div>
+                {
+                   !this.props.authedUser.id 
+                   ? <Redirect to='/error' /> : null
+                }
                 <Nav/>
                 <h1>Create New Question</h1>
                 <hr />

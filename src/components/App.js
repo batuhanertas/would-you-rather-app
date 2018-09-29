@@ -6,6 +6,7 @@ import Home from './Home'
 import Question from './Question'
 import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard'
+import Error from './Error'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
@@ -29,6 +30,7 @@ class App extends Component {
                   <Route path='/questions/:id' component={Question} />
                   <Route path='/add' component={NewQuestion} />
                   <Route path='/leaderboard' component={LeaderBoard} />
+                  <Route path='/error' exact component={Error} />
                 </div>
             </div>
           </Fragment>
