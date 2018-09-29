@@ -10,7 +10,7 @@ class Home extends Component {
         return (
             
             <div>
-            <Nav/>
+                <Nav/>
                 <h4>Home Page</h4>
                 <h5>Answered Questions</h5>
                 <ul>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleSaveQuestion } from '../actions/questions'
 import { Redirect } from 'react-router-dom'
+import Nav from './Nav'
 
 class NewQuestion extends Component {
     state ={
@@ -66,6 +67,7 @@ class NewQuestion extends Component {
 
         return (
             <div>
+                <Nav/>
                 <h1>Create New Question</h1>
                 <hr />
                 <h3>Complete the questions</h3>

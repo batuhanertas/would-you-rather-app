@@ -7,7 +7,7 @@ import Question from './Question'
 import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Nav from './Nav'
+
 
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
         <Router>
           <Fragment>
             <div className='container'>
-              <Nav/>
+              
               <div>
                   <Route path='/' exact component={LogIn} />
                   <Route path='/home' component={Home} />

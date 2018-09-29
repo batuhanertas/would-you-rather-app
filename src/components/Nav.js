@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import {handleLogoutUser} from '../actions/authedUser'
+import { NavLink } from 'react-router-dom'
 
 class Nav extends Component {
     state = {
@@ -56,24 +57,30 @@ class Nav extends Component {
             return <Redirect to='/leaderboard' />
         }
 
-        if (toHome === true) {
-            return <Redirect to='/home' />
-        }
+        
 
         return (
             <nav className="nav">
                 <ul>
-                    <li onClick={() => this.handleHome()}>
-                        Home
+                    <li>
+                        <NavLink to='/home' exact activeClassName='active'>
+                            Home
+                        </NavLink>
                     </li>
-                    <li onClick={() => this.handleNewQuestion()}>
-                        New Question
+                    <li>
+                        <NavLink to='/add' exact activeClassName='active'>
+                            New Question
+                        </NavLink>
                     </li>
-                    <li onClick={() => this.handleLeaderBoard()}>
-                        Leader Board
+                    <li>
+                        <NavLink to='/leaderboard' exact activeClassName='active' >
+                            Leader Board
+                        </NavLink>
                     </li>
-                    <li onClick={() => this.handleLogOutUser()}>
-                        Logout
+                    <li>
+                        <NavLink to='/' exact activeClassName='active' >
+                            Logout
+                        </NavLink>
                     </li>
                 </ul>
             </nav>
