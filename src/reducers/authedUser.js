@@ -1,4 +1,4 @@
-import { AUTH_USER } from "../actions/authedUser";
+import { AUTH_USER, LOGOUT_USER } from "../actions/authedUser";
 
 export default function authUser (state = {}, action) {
     switch (action.type) {
@@ -7,6 +7,8 @@ export default function authUser (state = {}, action) {
                 ...state,
                 ...action.authedUser
             }
+        case LOGOUT_USER:
+            return {}
         default:
             return state;
     }

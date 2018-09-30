@@ -17,13 +17,13 @@ export function handleAuthUser (user) {
 export function logoutUser() {
     return {
         type: LOGOUT_USER,
-        authedUser: undefined
+        authedUser: {}
     }
 }
 
 export function handleLogoutUser() {
     return (dispatch) => {
-        dispatch(logoutUser)
+        dispatch(logoutUser())
     }
 }
 

@@ -15,50 +15,16 @@ class Nav extends Component {
     handleLogOutUser() {
         const { dispatch } = this.props
 
-        // TODO: this is not the correct way to logout user find a way to remove authedUser from state
-        // or assign an empty object
-        // dispatch(handleLogoutUser())
+        dispatch(handleLogoutUser())
         
         this.setState( () => ({
             toLogIn: true,
         }))
     }
 
-    handleNewQuestion() {
-        this.setState( () => ({
-            toNewQuestion: true,
-        }))
-    }
-
-    handleLeaderBoard() {
-        this.setState( () => ({
-            toLeaderBoard: true,
-        }))
-    }
-
-    handleHome() {
-        this.setState( () => ({
-            toHome: true,
-        }))
-    }
+    
 
     render () {
-        const { toLogIn, toNewQuestion, toLeaderBoard, toHome } = this.state
-
-        if (toLogIn === true) {
-        return <Redirect to='/' />
-        }
-
-        if (toNewQuestion === true) {
-            return <Redirect to='/add' />
-        }
-
-        if (toLeaderBoard === true) {
-            return <Redirect to='/leaderboard' />
-        }
-
-        
-
         return (
             <nav className="nav">
                 <ul>
@@ -78,7 +44,7 @@ class Nav extends Component {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to='/' exact activeClassName='active' >
+                        <NavLink onClick={() => this.handleLogOutUser()} to='/' exact activeClassName='active' >
                             Logout
                         </NavLink>
                     </li>
