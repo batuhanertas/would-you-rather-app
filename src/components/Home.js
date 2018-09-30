@@ -27,8 +27,14 @@ class Home extends Component {
                 
                 <Nav/>
                 <h4>Home Page</h4>
-                <button onClick={() => this.handleTabChange(false)}>Answered Questions</button> 
-                <button onClick={() => this.handleTabChange(true)}>Unanswered Questions</button>
+                <ul className="nav nav-tabs">
+                    <li className="nav-item">
+                        <a class="nav-link active" onClick={() => this.handleTabChange(true)}>Unanswered Questions</a>
+                    </li>
+                    <li className="nav-item">
+                        <a class="nav-link active" onClick={() => this.handleTabChange(false)}>Answered Questions</a> 
+                    </li>
+                </ul>
                 <ul hidden={this.state.tabUnansweredQuestionsHidden}>
                     {this.props.answeredQuestionIds.map((id) => (
                         <li key={id}>
