@@ -5,11 +5,14 @@ import { Redirect } from 'react-router-dom'
 
 class LogIn extends Component {
   state = {
-    selectedUser: '',
+    selectedUser: 'placeholder',
     toHome: false,
   }
 
-  handleChange(selectedUser) {
+  handleChange(e) {
+    e.preventDefault()
+    let selectedUser = e.target.value
+
     this.setState(() => ({
       selectedUser: selectedUser
     }))
@@ -19,6 +22,12 @@ class LogIn extends Component {
     const { dispatch } = this.props
 
     let userId = this.state.selectedUser
+
+    if(userId === "placeholder") {
+      alert("Please choose your name to log in.")
+      return
+    }
+
     dispatch(handleAuthUser(this.props.users[userId]))
 
     this.setState( () => ({
@@ -41,7 +50,8 @@ class LogIn extends Component {
     return (
       <div className="dropdown">
         <h4>Please choose your name</h4>
-        <select onChange={(e) => this.handleChange(e.target.value)}>
+        <select defaultValue="placeholder" onChange={(e) => this.handleChange(e)}>
+          <option value="placeholder" defaultValue className="dropdown-placeholder">Please choose a user</option>
           {userIdsAndNames.map (user => (
             <option key={user.id} value={user.id}>{user.name}</option>
           ))}

@@ -23,3 +23,7 @@ li {
   padding: 10px;
   text-decoration: none;
 }
+
+.dropdown-placeholder {
+  color: #888;
+}
