@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import {handleLogoutUser} from '../actions/authedUser'
 import { NavLink } from 'react-router-dom'
 
