@@ -4,10 +4,11 @@ import { Link, withRouter } from 'react-router-dom'
 
 class HomeQuestion extends Component {
     render () {
-        const { question } = this.props
+        const { question, userAvatarURL } = this.props
 
         return (
             <div>
+                <img src={userAvatarURL} className="avatar-large" />
                 <h4>Would you rather?</h4>
                 <h5>{question.optionOne.text}</h5>
                 <Link to={`/questions/${question.id}`} >
@@ -18,10 +19,12 @@ class HomeQuestion extends Component {
     }
 }
 
-function mapStateToProps( { questions }, { id }) {
+function mapStateToProps( { questions, users }, { id }) {
     const question = questions[id]
+    const userAvatarURL = users[question.author].avatarURL
     return {
-        question : question
+        question : question,
+        userAvatarURL: userAvatarURL
     }
 }
 

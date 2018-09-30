@@ -9,6 +9,7 @@ class User extends Component {
 
         return (
             <div>
+                <img src={user.avatarURL} className="avatar-large"/>
                 <h2>{user.name}</h2>
                 <h3>Answered Question: {answeredQuestions}</h3>
                 <h3>Created Questions: {createdQuestions}</h3>

@@ -29,7 +29,7 @@ class QuestionSubmit extends Component {
  
 
     render() {
-        const { question, authedUser } = this.props
+        const { question, authedUser, authorAvatarUrl } = this.props
 
         const { toHome } = this.state
 
@@ -40,6 +40,7 @@ class QuestionSubmit extends Component {
         return (
             <div>
                 <h3>{question.author} asks:</h3>
+                <img src={authorAvatarUrl} className="avatar-large" />
                 <h4>Would you rather...</h4>
                 <form>
                     <label>
@@ -61,12 +62,14 @@ class QuestionSubmit extends Component {
     }
 }
 
-function mapStateToProps ({ questions, authedUser }, id) {
+function mapStateToProps ({ questions, authedUser, users }, id) {
     const question = questions[id.id]
+    const authorAvatarUrl = users[question.author].avatarURL
     
     return {
         question: question,
-        authedUser: authedUser
+        authedUser: authedUser,
+        authorAvatarUrl: authorAvatarUrl
     }
 }
 

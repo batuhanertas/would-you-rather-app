@@ -19,7 +19,7 @@ function calculateVote (question, user) {
 
 class QuestionPage extends Component {
     render() {
-        const { question, authedUser } = this.props
+        const { question, authedUser, authorAvatarUrl } = this.props
 
         let { firstOptionPercentage, secondOptionPercentage, firstOptionTotal, secondOptionTotal, allTotal, firstOptionNotSelected } 
                 = calculateVote(question, authedUser)
@@ -27,6 +27,7 @@ class QuestionPage extends Component {
         return (
             <div>
                 <h3>Asked by {question.author}</h3>
+                <img src={authorAvatarUrl} className="avatar-large" />
                 <h4> Results </h4>
                 <div>
                     <p>Would you rather { question.optionOne.text }?</p>
@@ -45,12 +46,14 @@ class QuestionPage extends Component {
     }
 }
 
-function mapStateToProps ({ questions, authedUser }, id) {
+function mapStateToProps ({ questions, authedUser, users }, id) {
     const question = questions[id.id]
+    const authorAvatarUrl = users[question.author].avatarURL
     
     return {
         question: question,
-        authedUser: authedUser
+        authedUser: authedUser,
+        authorAvatarUrl: authorAvatarUrl
     }
 }
 
