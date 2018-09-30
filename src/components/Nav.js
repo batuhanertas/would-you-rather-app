@@ -43,6 +43,9 @@ class Nav extends Component {
                         </NavLink>
                     </li>
                     <li>
+                        Hello {this.props.authedUser.name}
+                    </li>
+                    <li>
                         <NavLink onClick={() => this.handleLogOutUser()} to='/' exact activeClassName='active' >
                             Logout
                         </NavLink>
@@ -53,4 +56,10 @@ class Nav extends Component {
     }
 }
 
-export default connect()(Nav)
+function mapStateToProps ({ authedUser }) {
+    return {
+      authedUser: authedUser
+    }
+  }
+
+export default connect(mapStateToProps)(Nav)
