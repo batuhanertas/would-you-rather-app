@@ -6,6 +6,16 @@ import { Redirect } from 'react-router-dom'
 
 
 class Home extends Component {
+    state = {
+        tabUnansweredQuestionsHidden: true,
+      }
+
+      handleTabChange(unAnswered) {
+        this.setState( () => ({
+            tabUnansweredQuestionsHidden: unAnswered,
+          }))
+      }
+
     render () {
         
         return (        
@@ -17,16 +27,17 @@ class Home extends Component {
                 
                 <Nav/>
                 <h4>Home Page</h4>
-                <h5>Answered Questions</h5>
-                <ul>
+                <h5 onClick={() => this.handleTabChange(false)}>Answered Questions</h5> 
+                <h5 onClick={() => this.handleTabChange(true)}>Unanswered Questions</h5>
+                <ul hidden={this.state.tabUnansweredQuestionsHidden}>
                     {this.props.answeredQuestionIds.map((id) => (
                         <li key={id}>
                             <HomeQuestion id={id}/>
                         </li>
                     ))}
                 </ul>
-                <h5>Unanswered Questions</h5>
-                <ul>
+                
+                <ul hidden={!this.state.tabUnansweredQuestionsHidden}>
                     {this.props.unansweredQuestionIds.map((id) => (
                         <li key={id}>
                             <HomeQuestion id={id}/>
