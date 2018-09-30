@@ -4,22 +4,16 @@ import { Link, withRouter } from 'react-router-dom'
 
 class HomeQuestion extends Component {
     render () {
-        const { question, user } = this.props
+        const { question, userAvatarURL } = this.props
 
         return (
-            <div className="question-container">
-                <p>{user.name} asks:</p>
-                <div className="question-main-part">
-                    <img src={user.avatarURL} className="avatar-large"/> 
-                </div>
-
-                <div className="question-main-part question-text-part">
-                    <h4>Would you rather?</h4>
-                    <h5>... {question.optionOne.text} ...</h5>
-                    <Link to={`/questions/${question.id}`} >
-                        View Poll
-                    </Link>
-                </div>
+            <div>
+                <img src={userAvatarURL} className="avatar-large" />
+                <h4>Would you rather?</h4>
+                <h5>{question.optionOne.text}</h5>
+                <Link to={`/questions/${question.id}`} >
+                    View Poll
+                </Link>
             </div>
         )
     }
@@ -27,10 +21,10 @@ class HomeQuestion extends Component {
 
 function mapStateToProps( { questions, users }, { id }) {
     const question = questions[id]
-    const user = users[question.author]
+    const userAvatarURL = users[question.author].avatarURL
     return {
         question : question,
-        user: user
+        userAvatarURL: userAvatarURL
     }
 }
 
