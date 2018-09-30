@@ -4,9 +4,11 @@ import { NavLink } from 'react-router-dom'
 
 class Error extends Component {
     render () {
+        console.log(JSON.stringify(this.props))
         return (
             <div>
-                <h1>404 Not Found</h1>
+                
+                <h1>You need to be logged in to see this page</h1>
 
                 <NavLink to='/' exact activeClassName='active'>
                     Click here to log in

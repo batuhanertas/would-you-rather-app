@@ -4,10 +4,23 @@ import QuestionOverview from './QuestionOverview';
 import QuestionSubmit from './QuestionSubmit';
 import Nav from './Nav'
 import { Redirect } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 class Question extends Component {
     render() {
-        const { questionAnswered, id, authedUser } = this.props
+        const { questionAnswered, id, authedUser, question } = this.props
+
+        if (!question) {
+            return (
+                <div>
+                    <h2>404 Not Found</h2>
+                    <h3>This question doesn't exist</h3>
+                    <NavLink to='/' exact activeClassName='active'>
+                        Click here to go to log in page
+                    </NavLink> 
+                </div>
+            )
+        }
 
         return (
             <div>
@@ -42,7 +55,8 @@ function mapStateToProps ( { questions, authedUser }, props) {
     return {
         questionAnswered: answered,
         id: id,
-        authedUser: authedUser
+        authedUser: authedUser,
+        question: question
     }
 }
 
