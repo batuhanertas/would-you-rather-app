@@ -34,6 +34,27 @@ li {
 }
 
 .avatar-large {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 90px;
+  padding-top: 20px;
+  border-style: outset;
+  border-width: 1px;
+}
+
+.question-main-part {
+  width: 200px;
+  float: left;
+}
+
+.question-text-part {
+  margin-top: -20px;
+}
+
+.question-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px 40px;
+  border-style: solid;
+  border-width: 1px;
+  display:inline-block;
 }
