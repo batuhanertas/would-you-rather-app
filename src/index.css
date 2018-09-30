@@ -37,3 +37,7 @@ li {
   width: 70px;
   height: 70px;
 }
+
+.question-container {
+  width: 18rem;
+}

@@ -1,30 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class HomeQuestion extends Component {
     render () {
-        const { question, userAvatarURL } = this.props
+        const { question, user } = this.props
 
         return (
-            <div>
-                <img src={userAvatarURL} className="avatar-large" />
-                <h4>Would you rather?</h4>
-                <h5>{question.optionOne.text}</h5>
-                <Link to={`/questions/${question.id}`} >
-                    View Poll
-                </Link>
+            <div className="card text-center question-container">
+                <div class="card-header">
+                    {user.name} asks:
+                </div>
+                <img className="card-img-top" src={user.avatarURL} alt="Card image cap" />
+                <div className="card-body">
+                    <h5 className="card-title">Would you rather?</h5>
+                    <p className="card-text">...{question.optionOne.text}...</p>
+                    <Link to={`/questions/${question.id}`} >
+                        View Poll
+                    </Link>
+                </div>
             </div>
+            
         )
     }
 }
 
 function mapStateToProps( { questions, users }, { id }) {
     const question = questions[id]
-    const userAvatarURL = users[question.author].avatarURL
+    const user = users[question.author]
     return {
         question : question,
-        userAvatarURL: userAvatarURL
+        user: user
     }
 }
 
