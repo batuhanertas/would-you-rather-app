@@ -29,7 +29,7 @@ class QuestionSubmit extends Component {
  
 
     render() {
-        const { question, authedUser, authorAvatarUrl } = this.props
+        const { question, authedUser, user } = this.props
 
         const { toHome } = this.state
 
@@ -38,10 +38,10 @@ class QuestionSubmit extends Component {
         }
 
         return (
-            <div>
-                <h3>{question.author} asks:</h3>
-                <img src={authorAvatarUrl} className="avatar-large" />
-                <h4>Would you rather...</h4>
+            <div className="card text-center question-container">
+                <div className="card-header">{user.name} asks:</div>
+                <img className="card-img-top" src={user.avatarURL} />
+                <h5 className="card-title">Would you rather...</h5>
                 <form>
                     <label>
                         <input type="radio" name="option" value="optionOne" 
@@ -55,7 +55,9 @@ class QuestionSubmit extends Component {
                         />
                         {question.optionTwo.text}
                     </label>
-                    <button onClick={() => this.handleSubmit(authedUser, question.id)}>Submit</button>
+                    <br />
+                    <button className="btn btn-success" onClick={() => this.handleSubmit(authedUser, question.id)}>Submit</button>
+                    <br /> <br />
                 </form>
             </div>
         )
@@ -64,12 +66,12 @@ class QuestionSubmit extends Component {
 
 function mapStateToProps ({ questions, authedUser, users }, id) {
     const question = questions[id.id]
-    const authorAvatarUrl = users[question.author].avatarURL
+    const user = users[question.author]
     
     return {
         question: question,
         authedUser: authedUser,
-        authorAvatarUrl: authorAvatarUrl
+        user: user
     }
 }
 

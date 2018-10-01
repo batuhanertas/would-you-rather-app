@@ -26,7 +26,7 @@ class QuestionPage extends Component {
 
         return (
             <div className="card text-center question-container">
-                <div className="card-header">Asked by {question.author}</div>
+                <div className="card-header">Asked by {user.name}</div>
                 <img className="card-img-top" src={user.avatarURL} />
                 <h4> Results </h4>
                 <div className="card text-center">
