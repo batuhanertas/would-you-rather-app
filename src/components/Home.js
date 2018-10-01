@@ -29,10 +29,10 @@ class Home extends Component {
                 <h4>Home Page</h4>
                 <ul className="nav nav-tabs">
                     <li className="nav-item">
-                        <a class="nav-link active" onClick={() => this.handleTabChange(true)}>Unanswered Questions</a>
+                        <a className="nav-link " onClick={() => this.handleTabChange(true)}>Unanswered Questions</a>
                     </li>
                     <li className="nav-item">
-                        <a class="nav-link active" onClick={() => this.handleTabChange(false)}>Answered Questions</a> 
+                        <a className="nav-link " onClick={() => this.handleTabChange(false)}>Answered Questions</a> 
                     </li>
                 </ul>
                 <ul hidden={this.state.tabUnansweredQuestionsHidden}>

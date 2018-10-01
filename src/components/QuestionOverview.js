@@ -19,27 +19,35 @@ function calculateVote (question, user) {
 
 class QuestionPage extends Component {
     render() {
-        const { question, authedUser, authorAvatarUrl } = this.props
+        const { question, authedUser, user } = this.props
 
         let { firstOptionPercentage, secondOptionPercentage, firstOptionTotal, secondOptionTotal, allTotal, firstOptionNotSelected } 
                 = calculateVote(question, authedUser)
 
         return (
-            <div>
-                <h3>Asked by {question.author}</h3>
-                <img src={authorAvatarUrl} className="avatar-large" />
+            <div className="card text-center question-container">
+                <div className="card-header">Asked by {question.author}</div>
+                <img className="card-img-top" src={user.avatarURL} />
                 <h4> Results </h4>
-                <div>
-                    <p>Would you rather { question.optionOne.text }?</p>
-                    <p>{firstOptionPercentage}%</p>
-                    <p>{firstOptionTotal} out of {allTotal}</p>
-                    <p hidden={!firstOptionNotSelected}>Your Vote!</p>
+                <div className="card text-center">
+                    <div className="card-body">
+                        <p className="card-text">Would you rather { question.optionOne.text }?</p>
+                        <h5 className="card-title">{firstOptionTotal} out of {allTotal}</h5>
+                        <h6 className="card-subtitle mb-2 text-muted">{firstOptionPercentage}%</h6>
+                        <h3 hidden={!firstOptionNotSelected}>
+                            <span className="badge badge-danger" >Your Vote!</span>
+                        </h3>
+                    </div>
                 </div>
-                <div>
-                    <p>Would you rather { question.optionTwo.text }?</p>
-                    <p>{secondOptionPercentage}%</p>
-                    <p>{secondOptionTotal} out of {allTotal}</p>
-                    <p hidden={firstOptionNotSelected}>Your Vote!</p>
+                <div className="card text-center">
+                    <div className="card-body">
+                        <p className="card-text">Would you rather { question.optionOne.text }?</p>
+                        <h5 className="card-title">{secondOptionTotal} out of {allTotal}</h5>
+                        <h6 className="card-subtitle mb-2 text-muted">{secondOptionPercentage}%</h6>
+                        <h3 hidden={firstOptionNotSelected}>
+                            <span className="badge badge-danger" >Your Vote!</span>
+                        </h3>
+                    </div>
                 </div>
             </div>
         )
@@ -48,12 +56,12 @@ class QuestionPage extends Component {
 
 function mapStateToProps ({ questions, authedUser, users }, id) {
     const question = questions[id.id]
-    const authorAvatarUrl = users[question.author].avatarURL
+    const user = users[question.author]
     
     return {
         question: question,
         authedUser: authedUser,
-        authorAvatarUrl: authorAvatarUrl
+        user: user
     }
 }
 

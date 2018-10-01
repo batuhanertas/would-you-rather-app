@@ -9,7 +9,7 @@ class HomeQuestion extends Component {
 
         return (
             <div className="card text-center question-container">
-                <div class="card-header">
+                <div className="card-header">
                     {user.name} asks:
                 </div>
                 <img className="card-img-top" src={user.avatarURL} alt="Card image cap" />
