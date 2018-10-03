@@ -72,23 +72,29 @@ class NewQuestion extends Component {
                    ? <Redirect to='/error' /> : null
                 }
                 <Nav/>
-                <h1>Create New Question</h1>
-                <hr />
-                <h3>Complete the questions</h3>
-                <h2>Would you rather...</h2>
-                <input type="text" 
-                name="optionOne"
-                placeholder="First option..." 
-                onChange={(e) => this.handleChange(e)} />
-                <br />
-                <h2>OR</h2>
-                <br />
-                <input type="text" 
-                name="optionTwo"
-                placeholder="Second option..." 
-                onChange={(e) => this.handleChange(e)} />
-                <br />
-                <button onClick={() => this.handleSubmit(authedUser)}>Submit</button>
+                <h2>Create New Question</h2>
+                <div className="card text-center question-container">
+                    <div className="card-header">Create New Question</div>
+                    <br/><br/>
+                    <h6 className="card-subtitle mb-2 text-muted">Complete the question</h6>
+                    <h5 className="card-title">Would you rather...</h5>
+                    <br/><br/>
+                    <input type="text" 
+                    className="form-control"
+                    name="optionOne"
+                    placeholder="First option..." 
+                    onChange={(e) => this.handleChange(e)} />
+                    <br />
+                    <h2>OR</h2>
+                    <br />
+                    <input type="text"
+                    className="form-control" 
+                    name="optionTwo"
+                    placeholder="Second option..." 
+                    onChange={(e) => this.handleChange(e)} />
+                    <br />
+                    <button className="btn btn-success" onClick={() => this.handleSubmit(authedUser)}>Submit</button>
+                </div>
             </div>
         )
     }
