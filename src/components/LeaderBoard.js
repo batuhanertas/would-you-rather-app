@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import User from './User'
 import Nav from './Nav'
 import { Redirect } from 'react-router-dom'

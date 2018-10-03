@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import QuestionOverview from './QuestionOverview';
-import QuestionSubmit from './QuestionSubmit';
+import { connect } from 'react-redux'
+import QuestionOverview from './QuestionOverview'
+import QuestionSubmit from './QuestionSubmit'
 import Nav from './Nav'
 import { Redirect } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'

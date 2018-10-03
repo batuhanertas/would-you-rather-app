@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react'
 import { handleInitialData } from '../actions/shared'
 import { connect } from 'react-redux'
-import LogIn from './LogIn';
+import LogIn from './LogIn'
 import Home from './Home'
 import Question from './Question'
 import NewQuestion from './NewQuestion'
