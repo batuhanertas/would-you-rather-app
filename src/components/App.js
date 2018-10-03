@@ -6,8 +6,8 @@ import Home from './Home'
 import Question from './Question'
 import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard'
-import Error from './Error'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import PrivateRoute from './PrivateRoute'
 
 
 
@@ -23,15 +23,15 @@ class App extends Component {
         <Router>
           <Fragment>
             <div className='container'>
-              
               <div className='container'>
+                <Switch>
                   <Route path='/' exact component={LogIn} />
-                  <Route path='/home' component={Home} />
-                  <Route path='/questions/:id' component={Question} />
-                  <Route path='/add' component={NewQuestion} />
-                  <Route path='/leaderboard' component={LeaderBoard} />
-                  <Route path='/error' exact component={Error} />
-                </div>
+                  <PrivateRoute path='/home' component={Home}  authedUser={this.props.authedUser}/>
+                  <PrivateRoute path='/questions/:id' component={Question} authedUser={this.props.authedUser} />
+                  <PrivateRoute path='/add' component={NewQuestion} authedUser={this.props.authedUser} />
+                  <PrivateRoute path='/leaderboard' component={LeaderBoard} authedUser={this.props.authedUser} />
+                </Switch>
+              </div>
             </div>
           </Fragment>
         </Router>
@@ -40,4 +40,10 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+function mapStateToProps ({ authedUser }) {  
+  return {
+      authedUser: authedUser
+  }
+}
+
+export default connect(mapStateToProps)(App);

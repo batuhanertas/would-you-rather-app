@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import HomeQuestion from './HomeQuestion'
 import Nav from './Nav'
-import { Redirect } from 'react-router-dom'
 
 
 class Home extends Component {
@@ -19,12 +18,7 @@ class Home extends Component {
     render () {
         
         return (        
-            <div className='container'>
-                {
-                   !this.props.authedUser.id 
-                   ? <Redirect to='/error' /> : null
-                }
-                
+            <div className='container'> 
                 <Nav/>
                 <h4 className="page-header">Home Page</h4>
                 <div className="container">

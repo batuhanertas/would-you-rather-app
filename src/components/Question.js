@@ -3,21 +3,16 @@ import { connect } from 'react-redux'
 import QuestionOverview from './QuestionOverview'
 import QuestionSubmit from './QuestionSubmit'
 import Nav from './Nav'
-import { Redirect } from 'react-router-dom'
-import { NavLink } from 'react-router-dom'
 
 class Question extends Component {
     render() {
-        const { questionAnswered, id, authedUser, question } = this.props
+        const { questionAnswered, id, question } = this.props
 
         if (!question) {
             return (
                 <div>
-                    <h2>404 Not Found</h2>
-                    <h3>This question doesn't exist</h3>
-                    <NavLink to='/' exact activeClassName='active'>
-                        Click here to go to log in page
-                    </NavLink> 
+                    <h2 className="page-header">404 Not Found</h2>
+                    <h3 className="page-header">This question doesn't exist</h3>
                 </div>
             )
         }
@@ -25,9 +20,7 @@ class Question extends Component {
         return (
             <div>
                 {
-                   !authedUser.id 
-                   ? <Redirect to='/error' />  
-                   :<div>
+                   <div>
                         <Nav/>
                         {questionAnswered === true 
                             ? <QuestionOverview id={id} /> 
@@ -47,7 +40,7 @@ function mapStateToProps ( { questions, authedUser }, props) {
 
     let answered = false
 
-    if (authedUser.id &&
+    if (authedUser.id && question &&
         (question.optionOne.votes.includes(authedUser.id) || question.optionTwo.votes.includes(authedUser.id))) {
         answered = true
     }
@@ -55,7 +48,6 @@ function mapStateToProps ( { questions, authedUser }, props) {
     return {
         questionAnswered: answered,
         id: id,
-        authedUser: authedUser,
         question: question
     }
 }
