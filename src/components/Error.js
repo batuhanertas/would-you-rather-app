@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom'
 
 class Error extends Component {
     render () {
-        console.log(JSON.stringify(this.props))
         return (
             <div>
                 

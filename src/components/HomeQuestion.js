@@ -12,7 +12,7 @@ class HomeQuestion extends Component {
                 <div className="card-header">
                     {user.name} asks:
                 </div>
-                <img className="card-img-top" src={user.avatarURL} alt="Card image cap" />
+                <img className="card-img-top" src={user.avatarURL} alt={user.id} />
                 <div className="card-body">
                     <h5 className="card-title">Would you rather?</h5>
                     <p className="card-text">...{question.optionOne.text}...</p>

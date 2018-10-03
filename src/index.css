@@ -1,6 +1,8 @@
 .dropdown {
-  margin: auto;
+  margin: 6rem auto;
   width: 50%;
+  display: grid;
+  text-align: center;
 }
 
 .nav ul {

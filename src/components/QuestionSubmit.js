@@ -40,7 +40,7 @@ class QuestionSubmit extends Component {
         return (
             <div className="card text-center question-container">
                 <div className="card-header">{user.name} asks:</div>
-                <img className="card-img-top" src={user.avatarURL} />
+                <img className="card-img-top" src={user.avatarURL} alt={user.id} />
                 <h5 className="card-title">Would you rather...</h5>
                 <form>
                     <label>

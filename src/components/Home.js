@@ -39,6 +39,7 @@ class Home extends Component {
                     </ul>
                     </div>
                     <ul hidden={this.state.tabUnansweredQuestionsHidden}>
+                        <h5 className="page-header">Answered Questions</h5>
                         {this.props.answeredQuestionIds.map((id) => (
                             <li key={id}>
                                 <HomeQuestion id={id}/>
@@ -47,6 +48,7 @@ class Home extends Component {
                     </ul>
                     
                     <ul hidden={!this.state.tabUnansweredQuestionsHidden}>
+                        <h5 className="page-header">Unanswered Questions</h5>
                         {this.props.unansweredQuestionIds.map((id) => (
                             <li key={id}>
                                 <HomeQuestion id={id}/>

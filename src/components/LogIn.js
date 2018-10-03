@@ -58,7 +58,7 @@ class LogIn extends Component {
           
         </select>
         <br/><br/>
-        <button onClick={() => this.handleLogInUser()}>Log In</button>
+        <button className="btn btn-success" onClick={() => this.handleLogInUser()}>Log In</button>
       </div>
     )
   }

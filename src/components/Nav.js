@@ -24,6 +24,7 @@ class Nav extends Component {
     
 
     render () {
+        const { authedUser } = this.props
         return (
             <nav className="nav">
                 <ul>
@@ -49,8 +50,8 @@ class Nav extends Component {
                     </li>
                     <li>
                         <div>
-                            <img className="avatar-small" src={this.props.authedUser.avatarURL} />
-                            Hello {this.props.authedUser.name}
+                            <img className="avatar-small" src={authedUser.avatarURL} alt={authedUser.id} />
+                            Hello {authedUser.name}
                         </div>
                     </li>
                 </ul>
