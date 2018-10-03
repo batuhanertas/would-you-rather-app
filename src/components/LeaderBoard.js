@@ -16,6 +16,9 @@ class LeaderBoard extends Component {
             }
 
             <Nav/>
+                <div>
+                <h4 className="page-header">Leader Board</h4>
+                <br/><br/>
                 <ul>
                     {userIds.map((id) => (
                         <li key={id}>
@@ -23,6 +26,7 @@ class LeaderBoard extends Component {
                         </li>
                     ))}
                 </ul>
+                </div>
             </div>
         )
     }

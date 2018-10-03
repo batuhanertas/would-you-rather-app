@@ -19,12 +19,12 @@ class App extends Component {
 
   render() {
     return (
-      <div >
+      <div className='main-container'>
         <Router>
           <Fragment>
             <div className='container'>
               
-              <div>
+              <div className='container'>
                   <Route path='/' exact component={LogIn} />
                   <Route path='/home' component={Home} />
                   <Route path='/questions/:id' component={Question} />

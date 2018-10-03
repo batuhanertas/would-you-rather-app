@@ -19,37 +19,41 @@ class Home extends Component {
     render () {
         
         return (        
-            <div>
+            <div className='container'>
                 {
                    !this.props.authedUser.id 
                    ? <Redirect to='/error' /> : null
                 }
                 
                 <Nav/>
-                <h4>Home Page</h4>
-                <ul className="nav nav-tabs">
-                    <li className="nav-item">
-                        <a className="nav-link " onClick={() => this.handleTabChange(true)}>Unanswered Questions</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link " onClick={() => this.handleTabChange(false)}>Answered Questions</a> 
-                    </li>
-                </ul>
-                <ul hidden={this.state.tabUnansweredQuestionsHidden}>
-                    {this.props.answeredQuestionIds.map((id) => (
-                        <li key={id}>
-                            <HomeQuestion id={id}/>
+                <h4 className="page-header">Home Page</h4>
+                <div className="container">
+                    <div className="justify-content-center question-tab">
+                    <ul className="nav nav-tabs">
+                        <li className="nav-item">
+                            <a className="nav-link " onClick={() => this.handleTabChange(true)}>Unanswered Questions</a>
                         </li>
-                    ))}
-                </ul>
-                
-                <ul hidden={!this.state.tabUnansweredQuestionsHidden}>
-                    {this.props.unansweredQuestionIds.map((id) => (
-                        <li key={id}>
-                            <HomeQuestion id={id}/>
+                        <li className="nav-item">
+                            <a className="nav-link " onClick={() => this.handleTabChange(false)}>Answered Questions</a> 
                         </li>
-                    ))}
-                </ul>
+                    </ul>
+                    </div>
+                    <ul hidden={this.state.tabUnansweredQuestionsHidden}>
+                        {this.props.answeredQuestionIds.map((id) => (
+                            <li key={id}>
+                                <HomeQuestion id={id}/>
+                            </li>
+                        ))}
+                    </ul>
+                    
+                    <ul hidden={!this.state.tabUnansweredQuestionsHidden}>
+                        {this.props.unansweredQuestionIds.map((id) => (
+                            <li key={id}>
+                                <HomeQuestion id={id}/>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         )
     }

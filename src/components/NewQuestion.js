@@ -72,7 +72,8 @@ class NewQuestion extends Component {
                    ? <Redirect to='/error' /> : null
                 }
                 <Nav/>
-                <h2>Create New Question</h2>
+                <h4 className="page-header">Create New Question</h4>
+                <br/><br/>
                 <div className="card text-center question-container">
                     <div className="card-header">Create New Question</div>
                     <br/><br/>

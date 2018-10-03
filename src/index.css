@@ -39,5 +39,20 @@ li {
 }
 
 .question-container {
-  width: 18rem;
+  max-width: 20rem;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.main-container {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.question-tab{
+  display: flex;
+}
+
+.page-header {
+  text-align: center;
 }
