@@ -8,12 +8,12 @@ class User extends Component {
         const createdQuestions = user.questions.length
 
         return (
-            <div>
-                <img src={user.avatarURL} className="avatar-large"/>
-                <h2>{user.name}</h2>
-                <h3>Answered Question: {answeredQuestions}</h3>
-                <h3>Created Questions: {createdQuestions}</h3>
-                <h2>Score {answeredQuestions + createdQuestions}</h2>
+            <div className="card text-center question-container">
+                <div className="card-header">{user.name}</div>
+                <img src={user.avatarURL} className="card-img-top"/>
+                <h5 className="card-title">Score {answeredQuestions + createdQuestions}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Answered Question: {answeredQuestions}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Created Questions: {createdQuestions}</h6>
             </div>
         )
     }
