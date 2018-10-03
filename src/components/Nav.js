@@ -43,15 +43,15 @@ class Nav extends Component {
                         </NavLink>
                     </li>
                     <li>
+                        <NavLink onClick={() => this.handleLogOutUser()} to='/' exact activeClassName='active' >
+                            Logout
+                        </NavLink>
+                    </li>
+                    <li>
                         <div>
                             <img className="avatar-small" src={this.props.authedUser.avatarURL} />
                             Hello {this.props.authedUser.name}
                         </div>
-                    </li>
-                    <li>
-                        <NavLink onClick={() => this.handleLogOutUser()} to='/' exact activeClassName='active' >
-                            Logout
-                        </NavLink>
                     </li>
                 </ul>
             </nav>
