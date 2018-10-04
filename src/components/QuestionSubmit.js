@@ -56,7 +56,11 @@ class QuestionSubmit extends Component {
                         {question.optionTwo.text}
                     </label>
                     <br />
-                    <button className="btn btn-success" onClick={() => this.handleSubmit(authedUser, question.id)}>Submit</button>
+                    <button className="btn btn-success" 
+                    onClick={() => this.handleSubmit(authedUser, question.id)}
+                    disabled={!this.state.option}>
+                        Submit
+                    </button>
                     <br /> <br />
                 </form>
             </div>
