@@ -38,7 +38,7 @@ const QuestionOverview = ({question, authedUser, user}) => {
             </div>
             <div className="card text-center">
                 <div className="card-body">
-                    <p className="card-text">Would you rather { question.optionOne.text }?</p>
+                    <p className="card-text">Would you rather { question.optionTwo.text }?</p>
                     <h5 className="card-title">{secondOptionTotal} out of {allTotal}</h5>
                     <h6 className="card-subtitle mb-2 text-muted">{secondOptionPercentage}%</h6>
                     <h3 hidden={firstOptionNotSelected}>
