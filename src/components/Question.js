@@ -11,6 +11,7 @@ class Question extends Component {
         if (!question) {
             return (
                 <div>
+                    <Nav/>
                     <h2 className="page-header">404 Not Found</h2>
                     <h3 className="page-header">This question doesn't exist</h3>
                 </div>
